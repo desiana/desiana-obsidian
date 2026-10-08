@@ -1,2 +1,19 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=nexpert-2026-08-19-13.06.50.excalidraw.html"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nexpert 2026 strategy drawing</title></head><body><p>Open the <a href="nexpert-2026-08-19-13.06.50.excalidraw.html">Nexpert 2026 strategy drawing</a>.</p></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#17191f">
+<title>Nexpert strategy drawing</title>
+<style>
+:root{color-scheme:dark;font:14px/1.4 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#17191f;color:#f4f5f7}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}.top{height:52px;display:flex;align-items:center;gap:8px;padding:0 12px;background:#22252d;border-bottom:1px solid #393d47}.title{font-weight:600;margin-right:auto}.hint{opacity:.72;font-size:12px;margin:0 8px}button,.download{color:inherit;background:#30343e;border:1px solid #4a4f5b;border-radius:7px;padding:7px 11px;font:inherit;text-decoration:none;cursor:pointer}button:hover,.download:hover{background:#3b404b}#stage{height:calc(100dvh - 52px);width:100vw;overflow:hidden;position:relative;touch-action:none;cursor:grab;background:#f8f8f8}#stage.dragging{cursor:grabbing}#art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none;transform-origin:center;pointer-events:none}#zoomLabel{min-width:48px;text-align:center;font-variant-numeric:tabular-nums}@media(max-width:640px){.hint{display:none}.top{height:48px;padding:0 7px;gap:5px}button,.download{padding:7px 8px;font-size:12px}#stage{height:calc(100dvh - 48px)}}
+</style>
+</head>
+<body>
+<header class="top"><span class="title">Nexpert strategy drawing</span><span class="hint">Scroll/pinch to zoom · drag to pan</span><button id="out" aria-label="Zoom out">−</button><span id="zoomLabel">100%</span><button id="in" aria-label="Zoom in">+</button><button id="fit">Fit</button><a class="download" href="nexpert-drawing.svg" download>SVG</a><a class="download" href="nexpert-2026-08-19-13.06.50.excalidraw.html">Original view</a></header>
+<main id="stage" aria-label="Zoomable drawing"><img id="art" src="nexpert-drawing.svg" alt="Nexpert strategy Excalidraw diagram"></main>
+<script>
+(()=>{const stage=document.querySelector('#stage'),art=document.querySelector('#art'),label=document.querySelector('#zoomLabel');let scale=1,x=0,y=0,drag=null;const clamp=v=>Math.max(.2,Math.min(128,v));function render(){art.style.transform=`translate(${x}px,${y}px) scale(${scale})`;label.textContent=`${Math.round(scale*100)}%`}function zoom(factor,cx=stage.clientWidth/2,cy=stage.clientHeight/2){const r=stage.getBoundingClientRect(),px=cx-r.left-r.width/2,py=cy-r.top-r.height/2,next=clamp(scale*factor),ratio=next/scale;x=px-(px-x)*ratio;y=py-(py-y)*ratio;scale=next;render()}stage.addEventListener('wheel',e=>{e.preventDefault();zoom(Math.exp(-e.deltaY*.002),e.clientX,e.clientY)},{passive:false});stage.addEventListener('pointerdown',e=>{if(e.button!==0)return;drag={x:e.clientX,y:e.clientY,ox:x,oy:y};stage.classList.add('dragging');stage.setPointerCapture(e.pointerId)});stage.addEventListener('pointermove',e=>{if(!drag)return;x=drag.ox+e.clientX-drag.x;y=drag.oy+e.clientY-drag.y;render()});function end(){drag=null;stage.classList.remove('dragging')}stage.addEventListener('pointerup',end);stage.addEventListener('pointercancel',end);document.querySelector('#in').onclick=()=>zoom(1.5);document.querySelector('#out').onclick=()=>zoom(1/1.5);document.querySelector('#fit').onclick=()=>{scale=1;x=0;y=0;render()};window.addEventListener('keydown',e=>{if(e.key==='+'||e.key==='=')zoom(1.5);else if(e.key==='-')zoom(1/1.5);else if(e.key==='0')document.querySelector('#fit').click()});art.addEventListener('load',render);})();
+</script>
+</body>
+</html>
